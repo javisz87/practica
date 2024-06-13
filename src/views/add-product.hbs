@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- Link de Google Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comme:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Añadir Producto</title>
+</head>
+
+<style>
+    *{
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    /* Agrega tus estilos personalizados aquí */
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .titulo {
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 50px;
+        font-weight: 400;
+    }
+
+    .texto-id {
+        font-size: 24px;
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 2rem;
+    }
+
+    .container-general {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;
+        margin: 3rem auto;
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 10px 10px 16px -7px rgba(0,0,0,0.75);
+    }
+
+    .container-imagen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .titulo-imagen {
+        font-size: 28px;
+        font-weight: 300;
+        margin-bottom: 20px;
+    }
+
+    .producto-imagen {
+        width: 400px;
+        border-radius: 12px;
+        background-color: white;
+        box-shadow: 10px 10px 16px -7px rgba(0,0,0,0.75);
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .switch-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .switch-label {
+        margin-right: 10px;
+    }
+
+    .switch input[type="checkbox"] {
+        display: none;
+    }
+
+    .switch input[type="checkbox"] + label {
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        background-color: #ccc;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .switch input[type="checkbox"]:checked + label {
+        background-color: #007bff;
+    }
+
+    .switch label::before {
+        content: '';
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin: 2px;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: transform 0.3s;
+    }
+
+    .switch input[type="checkbox"]:checked + label::before {
+        transform: translateX(20px);
+    }
+
+    .boton-inicio {
+        background-color: #1900ff;
+        text-decoration: none;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .boton-inicio:hover {
+        background-color: #1d0dad;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<body>
+    {{!< layouts/main }}
+
+    <h1 class="titulo">Agregar Producto</h1>
+    
+    <div class="container-general">
+        <div class="container-imagen">
+            <h2 class="titulo-imagen">Imagen del Producto</h2>
+            <img class="producto-imagen" src="{{producto.imagen}}" alt="Imagen del producto" id="imagen-preview">
+            <p id="mensaje-no-imagen" style="display: none;">No hay ninguna foto seleccionada</p>
+        </div>
+
+        <div class="container">
+            <form method="POST" action="/products">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="{{producto.nombre}}" required>
+
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion" value="{{producto.descripcion}}" required>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" value="{{producto.precio}}" required>
+
+                <label for="categoria">Categoría:</label>
+                <input type="text" id="categoria" name="categoria" value="{{producto.categoria}}" required>
+
+                <label for="stock">Stock:</label>
+                <input type="number" id="stock" name="stock" value="{{producto.stock}}" required>
+
+                <label for="imagen">Imagen (URL):</label>
+                <input type="text" id="imagen" name="imagen" value="{{producto.imagen}}" oninput="mostrarImagenPreview(this.value)" required>
+
+                <button type="submit">Guardar Producto</button>
+                <button type="button" class="boton-inicio"><a href="/" class="boton-inicio">Volver al Inicio</a></button>
+            </form>
+        </div>
+    </div>
+
+    {{!-- Codigo JS --}}
+    <script>
+        function mostrarImagenPreview(url) {
+            const imagenPreview = document.getElementById('imagen-preview');
+            const mensajeNoImagen = document.getElementById('mensaje-no-imagen');
+
+            if (url.trim() === '') {
+                // Si la URL de la imagen está vacía, muestra el mensaje y oculta la vista previa
+                mensajeNoImagen.style.display = 'block';
+                imagenPreview.style.display = 'none';
+            } else {
+                // Si hay una URL de imagen, muestra la vista previa y oculta el mensaje
+                mensajeNoImagen.style.display = 'none';
+                imagenPreview.style.display = 'block';
+                imagenPreview.src = url;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- Link de Google Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comme:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    {{!-- Link Estilos CSS --}}
+    <link rel="stylesheet" href="./styles/register-login.css">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    {{!< layouts/main }}
+
+    <div class="container">
+        <h1 class="titulo-card">INICIO SESIÓN</h1>
+
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pass">Contraseña</label>
+                <input type="password" class="form-control" id="pass" name="pass" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </form>
+        <div class="github-div">
+            <a href="/github"><button class="github-button">Entrar con GitHub</button></a>
+        </div>
+        <p>¿Todavia no tienes una cuenta? <a href="register" class="link">Registrate</a></p>
+    </div>
+</body>
+</html>

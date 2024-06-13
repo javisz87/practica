@@ -1,0 +1,218 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el cuerpo de la página */
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos generales del navbar */
+.navbar {
+    background: radial-gradient(circle at 10% 20%, rgb(69, 86, 102) 0%, rgb(34, 34, 34) 90%);
+    height: 80px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+/* Estilos del texto a la izquierda */
+.navbar-left {
+    font-size: 1.5rem;
+}
+
+/* Estilos de los enlaces a la derecha */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos de los enlaces de navegación */
+.navbar-link {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 20px;
+    font-size: 1rem;
+}
+
+.navbar-logo {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 20px;
+}
+
+/* Estilos para el enlace de cerrar sesión */
+.logout-link {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para el ícono de cerrar sesión */
+.icon {
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+.titulo{
+    font-size: 50px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 20px
+}
+
+/* Estilos para el contenedor general del carrito */
+.carrito-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    padding: 2rem;
+    margin: 1rem 3rem 1rem 3rem;
+    border-radius: 12px;
+    -webkit-box-shadow: 10px 10px 31px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 31px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 31px -6px rgba(0,0,0,0.75);
+}
+
+/* Estilos para cada producto en el carrito */
+.producto {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 20px; /* Espacio entre productos */
+}
+
+/* Estilos para la imagen del producto */
+.producto-imagen {
+    max-width: 100px; /* Tamaño máximo de la imagen */
+    height: auto;
+    margin-right: 20px; /* Espacio entre la imagen y la información */
+}
+
+/* Estilos para la información del producto */
+.producto-info {
+    flex-grow: 1; /* Para que ocupe el espacio restante a la derecha */
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+/* Estilos para el nombre del producto */
+.producto-nombre {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Estilos para la descripción del producto */
+.producto-descripcion {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Estilos para el precio del producto */
+.producto-precio {
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+/* Estilos para la cantidad del producto en el carrito */
+.producto-cantidad {
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+/* Estilos para el precio total del carrito */
+.total-carrito {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Estilos para el botón de vaciar el carrito */
+.vaciar-carrito {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.finalizar-compra {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.finalizar-compra:hover {
+    background-color: #095eb9;
+}
+
+/* Estilo al pasar el cursor sobre el botón de vaciar el carrito */
+.vaciar-carrito:hover {
+    background-color: #095eb9;
+}
+
+/* Estilos cuando no hay productos en el carrito */
+.sin-productos {
+    font-size: 1rem;
+    margin-top: 20px;
+    text-align: center;
+    color: #777;
+}
+
+/* Estilo para el botón de eliminación */
+.eliminar-producto-btn {
+    background-color: #ff6961; /* Color de fondo del botón (puedes cambiarlo según tus preferencias) */
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espacio interno alrededor del contenido del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 14px; /* Tamaño de fuente */
+}
+
+.eliminar-producto-btn:hover {
+    background-color: #ff4136; /* Cambia el color de fondo al pasar sobre el botón */
+}
+
+.cantidad-input {
+    width: 40px; /* Ancho del campo de cantidad */
+    height: 30px; /* Altura del campo de cantidad */
+    padding: 5px; /* Espaciado interno */
+    font-size: 1rem;
+    border: 1px solid #ccc; /* Borde del campo */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilos para el botón "Actualizar" */
+.actualizar-cantidad-btn {
+    background-color: #007bff; /* Color de fondo del botón (puedes ajustarlo según tus preferencias) */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espacio interno alrededor del contenido del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 14px; /* Tamaño de fuente */
+    margin-left: 10px; /* Espacio entre el campo de cantidad y el botón "Actualizar" */
+}
+
+.actualizar-cantidad-btn:hover {
+    background-color: #095eb9; /* Cambia el color de fondo al pasar sobre el botón */
+}

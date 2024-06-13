@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- Link de Font Awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    {{!-- Link de Google Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comme:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/cart.css">
+    <title>Carrito</title>
+</head>
+<body>
+    {{!< layouts/main }}
+        <header>
+            <nav class="navbar">
+                <div class="navbar-left">
+                    <p class="navbar-text"><a href="/" class="navbar-logo">Tienda Tecnologica</a></p>
+                </div>
+                <div class="navbar-right">
+                    <a href="/" class="navbar-link">Inicio</a>
+                    <a href="/products" class="navbar-link">Productos</a>
+                    <a href="/cart" class="navbar-link cart-link">
+                        <i class="fas fa-shopping-cart"></i> <!-- Icono de carrito -->
+                        Carrito
+                    </a>
+                    <a href="/perfil" class="navbar-link">Perfil</a>
+                    <a href="/logout" class="navbar-link logout-link">
+                        <span class="icon">&#128274;</span> Cerrar Sesión
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <h1 class="titulo">Carrito</h1>
+
+        {{#if carrito}}
+        <div class="carrito-container">
+        <div class="carrito-productos">
+            <!-- Itera sobre los productos en el carrito -->
+            {{#each carrito.productos}}
+            <div class="producto">
+            <!-- Imagen del producto a la izquierda -->
+            <img class="producto-imagen" src="{{this.imagen}}" alt="Imagen del producto">
+            <div class="producto-info">
+                <!-- Información del producto a la derecha -->
+                <h3 class="producto-nombre">{{this.nombre}}</h3>
+                <p class="producto-precio">Precio: ${{this.precioUnitario}}</p>
+                <input type="number" class="cantidad-input" value="{{this.cantidad}}" min="1">
+                <!-- Agrega un botón de "Actualizar" con el ID del producto como atributo de datos -->
+                <button class="actualizar-cantidad-btn" data-product-id="{{this.producto}}">Actualizar</button>
+                <button class="eliminar-producto-btn" data-product-id="{{this._id}}">
+                    <i class="fas fa-trash"></i> Eliminar
+                </button>
+            </div>
+            </div>
+            {{/each}}
+        </div>
+        <!-- Precio total al final del carrito -->
+        <div class="total-carrito">
+            <p>Total del carrito: ${{carrito.total}}</p>
+            <!-- Botón para vaciar el carrito -->
+            <button id="vaciar-carrito-btn" class="vaciar-carrito">Vaciar Carrito</button>
+            <button id="finalizar-compra-btn" class="finalizar-compra">Finalizar Compra</button>
+        </div>
+        </div>
+        {{else}}
+        <p class="sin-productos">No hay productos en el carrito.</p>
+        {{/if}}
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="./js/delete-cart.js"></script>
+        <script src="./js/delete-product.js"></script>
+        <script src="./js/buy-complete.js"></script>
+        <script src="./js/update-cart.js"></script>
+</body>
+</html>
